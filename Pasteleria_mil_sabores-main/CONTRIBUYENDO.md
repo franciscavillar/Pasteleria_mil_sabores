@@ -1,0 +1,4 @@
+- Ramas: `feat/<slug>`, `fix/<slug>`, `docs/<slug>`
+- Commits: Conventional Commits (feat, fix, docs, style, refactor, test, chore)
+- PRs pequeños con “Cómo probar” y CI en verde
+- DoD: funciona, sin errores en consola, docs actualizadas
