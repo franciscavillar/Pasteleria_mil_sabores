@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iniciar sesión | Pastelería 1000 Sabores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+      <div class="container">
+        <a class="navbar-brand brand-font text-choco" href="index.html">1000 Sabores</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Blogs</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Nosotros</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+          </ul>
+          <a class="btn btn-outline-choco" href="registro.html">Registro</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container py-5" style="max-width:560px;">
+      <h1 class="brand-font text-choco mb-4">Iniciar sesión</h1>
+      <form id="loginForm" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label class="form-label">Correo</label>
+          <input type="email" class="form-control" id="lemail" required>
+          <div class="invalid-feedback">Ingresa tu correo.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="lpass" required minlength="6" maxlength="32">
+          <div class="invalid-feedback">Ingresa tu contraseña.</div>
+        </div>
+        <button class="btn btn-choco" type="submit">Entrar</button>
+      </form>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/validate.js"></script>
+<script src="js/validate.js"></script>
+    <script>
+      (() => {
+        'use strict';
+        const form = document.getElementById('loginForm');
+        form.addEventListener('submit', (e) => {
+          if(!form.checkValidity()){ e.preventDefault(); e.stopPropagation(); }
+          form.classList.add('was-validated');
+          if(!form.checkValidity()) return;
+
+          const user = getUser();
+          const email = document.getElementById('lemail').value.trim();
+          const pass = document.getElementById('lpass').value;
+          if(!user || user.email !== email){
+            e.preventDefault(); alert('Usuario no registrado. Crea tu cuenta.'); return;
+          }
+          // En prototipo no persistimos la contraseña; validación mínima simulada
+          if(pass.length < 6){ e.preventDefault(); alert('Contraseña inválida.'); return; }
+
+          alert('Inicio de sesión correcto.');
+          // Puedes setear un flag de sesión si lo necesitas
+          localStorage.setItem('ms_session', 'active');
+          window.location.href = 'index.html';
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Detalle de producto | Pastelería 1000 Sabores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+      <div class="container">
+        <a class="navbar-brand brand-font text-choco" href="index.html">1000 Sabores</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+            <li class="nav-item"><a class="nav-link" href="blogs.html">Blogs</a></li>
+            <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          </ul>
+          <a class="btn btn-rose" data-bs-toggle="offcanvas" href="#offcanvasCart" role="button" aria-controls="offcanvasCart">
+            🛒 <span class="badge text-bg-dark" id="cartCount">0</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="bg-rose-subtle border-bottom">
+      <div class="container py-4">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+            <li class="breadcrumb-item"><a href="productos.html">Productos</a></li>
+            <li class="breadcrumb-item active" aria-current="page" id="crumbName">Detalle</li>
+          </ol>
+        </nav>
+        <h1 class="brand-font text-choco" id="titleName">Detalle del producto</h1>
+      </div>
+    </header>
+
+    <main class="container py-4" id="productDetail">
+      <!-- Se llena por JS -->
+    </main>
+
+    <!-- Offcanvas Cart -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasCartLabel">Carrito</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul id="cartList" class="list-group mb-3"></ul>
+        <div class="mb-3">
+          <label class="form-label">Código promocional</label>
+          <input id="promoInput" type="text" class="form-control" placeholder="FELICES50">
+        </div>
+        <div id="discountInfo" class="small mb-2"></div>
+        <div class="d-flex justify-content-between align-items-center">
+          <strong>Total:</strong>
+          <strong id="cartTotal">$0</strong>
+        </div>
+        <div class="d-grid gap-2">
+          <hr>
+          <button class="btn btn-choco" id="checkoutBtn">Aplicar / Pagar</button>
+          <a class="btn btn-outline-choco" id="GoCheckoutBtn" href="checkout.html">Ir al checkout</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="py-4 border-top bg-body-tertiary mt-5">
+      <div class="container d-flex flex-column flex-md-row justify-content-between gap-3">
+        <p class="mb-0">&copy; 2025 Pastelería 1000 Sabores</p>
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link px-2" href="#">Términos</a></li>
+          <li class="nav-item"><a class="nav-link px-2" href="#">Privacidad</a></li>
+          <li class="nav-item"><a class="nav-link px-2" href="#">Soporte</a></li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+<script src="js/validate.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      function getParam(name){
+        const url = new URL(window.location.href);
+        return url.searchParams.get(name);
+      }
+
+      function renderDetail(p){
+        const root = document.getElementById('productDetail');
+        root.innerHTML = `
+          <div class="row g-4">
+            <div class="col-12 col-md-6">
+              <div class="ratio ratio-4x3 bg-light rounded shadow-sm d-flex align-items-center justify-content-center">
+                <span class="text-muted">Imagen de ${p.nombre}</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <h2>${p.nombre}</h2>
+              <p class="text-muted">${p.categoria}</p>
+              <p>${p.descripcion}</p>
+              <p><strong>Stock:</strong> ${p.stock} unidades</p>
+              <div class="d-flex align-items-center gap-3">
+                <strong class="fs-4">$${p.precio.toLocaleString('es-CL')}</strong>
+                <button class="btn btn-rose" data-add="${p.codigo}">Añadir al carrito</button>
+              </div>
+            </div>
+          </div>
+        `;
+        document.getElementById('crumbName').textContent = p.nombre;
+        document.getElementById('titleName').textContent = p.nombre;
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const code = getParam('code');
+        const p = getProductoByCodigo(code);
+        if(!code || !p){
+          document.getElementById('productDetail').innerHTML = \`
+            <div class="alert alert-warning">
+              Producto no encontrado. <a href="productos.html" class="alert-link">Volver al listado</a>.
+            </div>\`;
+          return;
+        }
+        renderDetail(p);
+      });
+    </script>
+  </body>
+</html>
