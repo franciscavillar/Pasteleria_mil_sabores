@@ -1,81 +1,111 @@
-/* Footer siempre al fondo */
-html, body {
-  height: 100%;
-}
+/*footer*/
+html, body { height: 100%; }
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* Paleta base aplicada al body */
+  background: var(--cream);
+  color: var(--text-main);
+  font-family: 'Lato', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  line-height: 1.6;
 }
-footer {
-  margin-top: auto;
-}
-/* Paleta y estilos base (inspirada en Forma C) */
+footer { margin-top: auto; }
+
+/* paleta colores*/
 :root{
+  /* Fondo principal */
   --cream: #FFF5E1;
-  --rose: #FFC0CB;
-  --choco: #8B4513;
-  --text-main: #5D4037;
-  --text-secondary: #B0BEC5;
-}
 
-body { font-family: 'Lato', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; }
-.brand-font { font-family: 'Pacifico', cursive; }
-
-.bg-cream { background-color: var(--cream) !important; }
-.text-choco { color: var(--choco) !important; }
-.btn-choco { background-color: var(--choco); color: #fff; border-color: var(--choco); }
-.btn-outline-choco { color: var(--choco); border-color: var(--choco); }
-.btn-rose { background-color: var(--rose); border-color: var(--rose); }
-
-.bg-rose-subtle { background-color: #ffe4ea; }
-
-.card-title { color: var(--text-main); }
-.card-text { color: var(--text-secondary); }
-.logo { font-size: 1.4rem; color: var(--choco); }
-
-
-/* ===== Refinamiento visual y accesibilidad ===== */
-:root{
-  --cream: #FFF5E1;
+  /* Acentos */
   --rose: #FFC0CB;
   --rose-600: #ff9fb3;
+
+  /* Chocolate */
   --choco: #8B4513;
   --choco-700: #6e3610;
+
+  /* Texto */
+  --text-main: #5D4037;     /* principal */
+  --text-secondary: #B0BEC5;/* secundario */
+
+  /* Estados */
   --success-soft: #e9f7ef;
-  --danger-soft: #fdecea;
-  --focus-ring: 0 0 0 .25rem rgba(139,69,19,.25);
+  --danger-soft:  #fdecea;
+
+  /* Enfoque accesible (anillo rosado) */
+  --focus-ring: 0 0 0 .25rem rgba(255,192,203,.35);
 }
 
-a, .btn-link { color: var(--choco); }
-a:hover { color: var(--choco-700); }
+/* tipografías y marca*/
+.brand-font { font-family: 'Pacifico', cursive; }
+.logo       { font-size: 1.4rem; color: var(--choco); }
 
-.btn-choco:hover { background-color: var(--choco-700); border-color: var(--choco-700); }
-.btn-outline-choco:hover { background-color: var(--choco); color: #fff; }
+/* Logo de navbar */
+.navbar-brand .logo-img{
+  width: 40px; height: 40px; object-fit: contain; vertical-align: middle; border-radius: 6px;
+}
+@media (min-width: 992px){
+  .navbar-brand .logo-img{ width: 48px; height: 48px; }
+}
 
-.form-control:focus, .form-select:focus, .btn:focus {
-  box-shadow: var(--focus-ring);
+/* color / fondos */
+.bg-cream        { background-color: var(--cream) !important; }
+.bg-rose-subtle  { background-color: #ffe4ea; }
+.text-choco      { color: var(--choco) !important; }
+.text-secondary2 { color: var(--text-secondary) !important; }
+
+/*Botones */
+.btn-choco{
+  background-color: var(--choco);
+  color: #fff;
   border-color: var(--choco);
 }
+.btn-choco:hover{
+  background-color: var(--choco-700);
+  border-color: var(--choco-700);
+}
 
-.is-valid ~ .valid-hint { display:block; color:#198754; }
-.is-invalid ~ .invalid-hint { display:block; color:#dc3545; }
+.btn-outline-choco{
+  color: var(--choco);
+  border-color: var(--choco);
+}
+.btn-outline-choco:hover{
+  background-color: var(--choco);
+  color: #fff;
+}
+
+.btn-rose{
+  background-color: var(--rose);
+  border-color: var(--rose);
+  color: var(--choco);
+}
+.btn-rose:hover{ filter: brightness(0.95); }
+
+/* Links coherentes con la paleta */
+a, .btn-link { color: var(--choco); }
+a:hover      { color: var(--choco-700); }
+
+/* Tarjetas / textos*/
+.card-title { color: var(--text-main); }
+.card-text  { color: var(--text-secondary); }
+
+/*Formularios */
+.form-control:focus,
+.form-select:focus,
+.btn:focus{
+  box-shadow: var(--focus-ring);
+  border-color: var(--rose);
+}
+
+.is-valid  ~ .valid-hint   { display:block; color:#198754; }
+.is-invalid~ .invalid-hint { display:block; color:#dc3545; }
 .valid-hint, .invalid-hint { display:none; font-size:.875rem; }
 
-.badge-hint { font-size:.75rem; }
-.border-dashed { border-style:dashed !important; }
-
-/* Feedback en formularios */
 .input-hint { font-size:.875rem; color:#6c757d; }
 .input-live { min-height:1.25rem; display:block; }
 .input-live.success { color:#198754; background:var(--success-soft); padding:.25rem .5rem; border-radius:.375rem; }
-.input-live.error { color:#dc3545; background:var(--danger-soft); padding:.25rem .5rem; border-radius:.375rem; }
+.input-live.error   { color:#dc3545; background:var(--danger-soft);  padding:.25rem .5rem; border-radius:.375rem; }
 
-/* Config medidas logo.png */
-
-@media (min-width: 992px){
-  .navbar-brand .logo-img{
-    width: 48px;   /* antes 36px */
-    height: 48px;  /* antes 36px */
-  }
-}
+.badge-hint   { font-size:.75rem; }
+.border-dashed{ border-style:dashed !important; }
