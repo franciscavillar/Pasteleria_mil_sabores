@@ -1,36 +1,120 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Blog: Tres leches clásica</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tres leches clásica | Pastelería 1000 Sabores</title>
+  <meta name="description" content="Receta clásica de torta tres leches: pasos, tips y tiempos para un resultado perfecto y jugoso.">
+
+  <!-- (Opcional en producción) -->
+  <!-- <link rel="canonical" href="https://tusitio.cl/blog2.html"> -->
+
+  <!-- Open Graph básico -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Tres leches clásica">
+  <meta property="og:description" content="Receta clásica de torta tres leches: pasos, tips y tiempos para un resultado perfecto y jugoso.">
+  <!-- <meta property="og:url" content="https://tusitio.cl/blog2.html"> -->
+  <!-- <meta property="og:image" content="https://tusitio.cl/img/blog-tres-leches.jpg"> -->
+
+  <!-- (Opcional) JSON-LD mínimo; ajusta la URL de imagen absoluta al publicar -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Tres leches clásica",
+    "author": { "@type": "Organization", "name": "Pastelería 1000 Sabores" },
+    "datePublished": "2025-08-30",
+    "image": "https://tusitio.cl/img/blog-tres-leches.jpg"
+  }
+  </script>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<<<<<<< HEAD
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Pacifico&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
+=======
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Relación con el artículo previo -->
+  <link rel="prev" href="blog1.html">
+>>>>>>> 87510cb (feat(blogs): agrega breadcrumb y metadatos SEO en blog1, blog2 y blogs)
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
-  <div class="container">
-        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-          <img src="img/logo.png" alt="Logo 1000 Sabores" class="logo-img" />
-            <span class="logo brand-font">Pastelería 1000 Sabores</span>
-        </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="nav">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="blogs.html">Volver a Blogs</a></li>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom" aria-label="Principal">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="img/logo.png" alt="Logo 1000 Sabores" class="logo-img">
+        <span class="logo brand-font">Pastelería 1000 Sabores</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+              aria-controls="nav" aria-expanded="false" aria-label="Abrir navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="btn btn-outline-choco" href="blogs.html">← Volver a Blogs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido -->
+  <main class="container py-4">
+    <!-- Breadcrumb simple -->
+    <nav aria-label="miga de pan">
+      <ol class="breadcrumb small">
+        <li class="breadcrumb-item"><a class="text-decoration-none" href="index.html">Inicio</a></li>
+        <li class="breadcrumb-item"><a class="text-decoration-none" href="blogs.html">Blogs</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Tres leches clásica</li>
+      </ol>
+    </nav>
+
+    <article class="mx-auto" style="max-width: 900px;">
+      <!-- Imagen destacada -->
+      <img
+        src="img/blog-tres-leches.jpg"
+        alt="Porción de torta tres leches con crema por encima"
+        class="img-fluid rounded shadow-sm mb-3"
+        loading="lazy" decoding="async"
+        onerror="this.onerror=null;this.src='https://placehold.co/1200x675?text=Imagen+no+disponible';">
+
+      <header class="mb-2">
+        <h1 class="brand-font text-choco h2 mb-1">Receta: tres leches clásica</h1>
+        <p class="text-muted mb-0">Una guía paso a paso para lograr una esponja aireada y un equilibrio perfecto de leches.</p>
+      </header>
+
+      <p>Para la base, bate yemas y azúcar hasta blanquear; incorpora harina cernida en movimientos envolventes y, por último, claras a punto nieve. Hornea a 180&nbsp;°C hasta que esté dorado y el palillo salga seco.</p>
+      <p>Mezcla las tres leches y, con el bizcocho aún tibio, pínchalo y báñalo lentamente para que absorba de forma uniforme. Cubre con crema batida suave.</p>
+      <p><strong>Consejo:</strong> refrigera al menos 6&nbsp;horas antes de servir para un resultado más jugoso.</p>
+
+      <!-- Navegación del artículo -->
+      <div class="d-flex flex-wrap gap-2 mt-4 pt-3 border-top">
+        <nav aria-label="Artículos relacionados" class="me-auto">
+          <a class="btn btn-outline-secondary" href="blog1.html" rel="prev">← Anterior: 50 años de dulzura</a>
+        </nav>
+        <a class="btn btn-outline-choco" href="blogs.html" aria-label="Volver a Blogs">Volver a Blogs</a>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 border-top bg-body-tertiary">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-3">
+      <p class="mb-0">&copy; 2025 Pastelería 1000 Sabores</p>
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link px-2" href="#">Términos</a></li>
+        <li class="nav-item"><a class="nav-link px-2" href="#">Privacidad</a></li>
+        <li class="nav-item"><a class="nav-link px-2" href="#">Soporte</a></li>
       </ul>
     </div>
-  </div>
-</nav>
-<main class="container py-4">
-  <div class="ratio ratio-16x9 bg-light rounded mb-3"></div>
-  <h1>Receta: tres leches clásica</h1>
-  <p>Una guía paso a paso para lograr una esponja aireada y un equilibrio perfecto de leches. Ideal para celebraciones.</p>
-  <p>Consejo: refrigera al menos 6 horas antes de servir para un resultado más jugoso.</p>
-</main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
