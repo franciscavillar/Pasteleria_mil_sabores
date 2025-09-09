@@ -1,15 +1,15 @@
 
 function renderDestacadosCarousel() {
-  // 9 productos para el carrusel 
+  // 9 productos
   const destacados = productos.slice(0, 9);
 
   const grid = document.getElementById('productGrid');
   if (!grid || !destacados.length) return;
 
- 
+  // quitar clases de grilla si venían del HTML
   grid.classList.remove('row', 'row-cols-1', 'row-cols-sm-2', 'row-cols-md-3', 'g-4');
 
-  //  3 por slide
+  // 3 por slide
   const perSlide = 3;
   const slides = [];
   for (let i = 0; i < destacados.length; i += perSlide) {
@@ -19,9 +19,8 @@ function renderDestacadosCarousel() {
   grid.innerHTML = `
     <div class="row justify-content-center">
       <div class="col-12 col-xxl-10">
-        <div id="carouselDestacados" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+        <div id="carouselDestacados" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="hover">
           
-          <!-- Indicadores -->
           <div class="carousel-indicators">
             ${slides.map((_, i) => `
               <button type="button"
@@ -61,7 +60,6 @@ function renderDestacadosCarousel() {
             `).join('')}
           </div>
 
-          <!-- Controles -->
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselDestacados" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Anterior</span>
@@ -76,7 +74,7 @@ function renderDestacadosCarousel() {
   `;
 }
 
-/* localStorage */
+/* localStorage carrito */
 const CART_KEY = 'ms_cart_items';
 
 function getCart(){
@@ -141,7 +139,9 @@ function renderCart(){
   if (totalEl) totalEl.textContent = '$' + calcTotal(items).toLocaleString('es-CL');
 }
 
-/* lista */
+/* 
+   lista de productos (productos.html)
+    */
 function renderProducts(){
   const grid = document.getElementById('productGrid');
   if(!grid) return;
@@ -168,7 +168,9 @@ function renderProducts(){
   `).join('');
 }
 
-/* añadir/quitar*/
+/*
+   añadir/quitar
+    */
 document.addEventListener('click', (e) => {
   const add = e.target.closest('[data-add]');
   if(add){
@@ -180,7 +182,9 @@ document.addEventListener('click', (e) => {
   if(remove){ removeFromCart(remove.getAttribute('data-remove')); }
 });
 
- */
+/* 
+   Detección de página y arranque
+   */
 function isProductosPage(){
   // Detecta productos.html o un body marcado con data-page="productos"
   return /productos\.html$/i.test(location.pathname) || (document.body && document.body.dataset && document.body.dataset.page === 'productos');
@@ -219,7 +223,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/*Descuentos y totales*/
+/* 
+   Descuentos y totales */
 function renderTotals(){
   const items = getCart();
   const breakdown = (typeof computeDiscounts === 'function')
