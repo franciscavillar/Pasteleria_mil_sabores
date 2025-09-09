@@ -70,3 +70,12 @@ a:hover { color: var(--choco-700); }
 .input-live { min-height:1.25rem; display:block; }
 .input-live.success { color:#198754; background:var(--success-soft); padding:.25rem .5rem; border-radius:.375rem; }
 .input-live.error { color:#dc3545; background:var(--danger-soft); padding:.25rem .5rem; border-radius:.375rem; }
+
+/* Config medidas logo.png */
+
+@media (min-width: 992px){
+  .navbar-brand .logo-img{
+    width: 48px;   /* antes 36px */
+    height: 48px;  /* antes 36px */
+  }
+}
