@@ -1,14 +1,15 @@
 
 function renderDestacadosCarousel() {
-  // Toma hasta 9 productos para el carrusel (ajusta si quieres más)
+  // 9 productos para el carrusel 
   const destacados = productos.slice(0, 9);
 
   const grid = document.getElementById('productGrid');
   if (!grid || !destacados.length) return;
 
+ 
   grid.classList.remove('row', 'row-cols-1', 'row-cols-sm-2', 'row-cols-md-3', 'g-4');
 
-
+  //  3 por slide
   const perSlide = 3;
   const slides = [];
   for (let i = 0; i < destacados.length; i += perSlide) {
@@ -75,7 +76,7 @@ function renderDestacadosCarousel() {
   `;
 }
 
-/* (localStorage)*/
+/* localStorage */
 const CART_KEY = 'ms_cart_items';
 
 function getCart(){
@@ -140,7 +141,7 @@ function renderCart(){
   if (totalEl) totalEl.textContent = '$' + calcTotal(items).toLocaleString('es-CL');
 }
 
-/* productos (lista clásica) */
+/* lista */
 function renderProducts(){
   const grid = document.getElementById('productGrid');
   if(!grid) return;
@@ -167,7 +168,7 @@ function renderProducts(){
   `).join('');
 }
 
-/* Eventos globales de clic (añadir/quitar)*/
+/* añadir/quitar*/
 document.addEventListener('click', (e) => {
   const add = e.target.closest('[data-add]');
   if(add){
@@ -179,16 +180,23 @@ document.addEventListener('click', (e) => {
   if(remove){ removeFromCart(remove.getAttribute('data-remove')); }
 });
 
-/*Inicio */
-document.addEventListener('DOMContentLoaded', () => {
-  const hasGrid = !!document.getElementById('productGrid');
+ */
+function isProductosPage(){
+  // Detecta productos.html o un body marcado con data-page="productos"
+  return /productos\.html$/i.test(location.pathname) || (document.body && document.body.dataset && document.body.dataset.page === 'productos');
+}
 
-  if (hasGrid) {
-    // index: carrusel centrado
-    renderDestacadosCarousel();
-  } else {
-    // otras páginas con listado
-    renderProducts();
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('productGrid');
+
+  if (grid) {
+    if (isProductosPage()) {
+      // En productos.html debe verse la grilla
+      renderProducts();
+    } else {
+      // En index.html debe verse el carrusel
+      renderDestacadosCarousel();
+    }
   }
 
   renderCart();
@@ -211,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-
+/*Descuentos y totales*/
 function renderTotals(){
   const items = getCart();
   const breakdown = (typeof computeDiscounts === 'function')
