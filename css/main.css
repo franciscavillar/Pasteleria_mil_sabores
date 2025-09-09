@@ -1,0 +1,18 @@
+/* Tipografia y color de marca */
+.brand-font { font-family: "Poppins", system-ui, -apple-system, Arial, sans-serif; }
+.text-choco { color: #6b3e2e; }
+
+/* Botón contorno chocolate */
+.btn-outline-choco {
+  border-color: #6b3e2e;
+  color: #6b3e2e;
+}
+.btn-outline-choco:hover,
+.btn-outline-choco:focus {
+  background: #6b3e2e;
+  color: #fff;
+  border-color: #6b3e2e;
+}
+
+/* Fondo rosado suave para hero/header */
+.bg-rose-subtle { background: #fdecef; }
