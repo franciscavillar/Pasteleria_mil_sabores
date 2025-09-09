@@ -1,4 +1,5 @@
 /*footer*/
+
 html, body { height: 100%; }
 body {
   display: flex;
@@ -33,11 +34,11 @@ footer { margin-top: auto; }
   --success-soft: #e9f7ef;
   --danger-soft:  #fdecea;
 
-  /* Enfoque accesible (anillo rosado) */
+  /*  rosado*/
   --focus-ring: 0 0 0 .25rem rgba(255,192,203,.35);
 }
 
-/* tipografías y marca*/
+/* tipografías */
 .brand-font { font-family: 'Pacifico', cursive; }
 .logo       { font-size: 1.4rem; color: var(--choco); }
 
@@ -49,7 +50,7 @@ footer { margin-top: auto; }
   .navbar-brand .logo-img{ width: 48px; height: 48px; }
 }
 
-/* color / fondos */
+/* color - fondos */
 .bg-cream        { background-color: var(--cream) !important; }
 .bg-rose-subtle  { background-color: #ffe4ea; }
 .text-choco      { color: var(--choco) !important; }
@@ -82,11 +83,11 @@ footer { margin-top: auto; }
 }
 .btn-rose:hover{ filter: brightness(0.95); }
 
-/* Links coherentes con la paleta */
+/* Links paleta */
 a, .btn-link { color: var(--choco); }
 a:hover      { color: var(--choco-700); }
 
-/* Tarjetas / textos*/
+/* card y textos*/
 .card-title { color: var(--text-main); }
 .card-text  { color: var(--text-secondary); }
 

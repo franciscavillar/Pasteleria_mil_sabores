@@ -8,7 +8,7 @@
   function loadJSON(k, fallback){ try{ return JSON.parse(localStorage.getItem(k)) ?? fallback; }catch(_){ return fallback; } }
   function saveJSON(k, v){ localStorage.setItem(k, JSON.stringify(v)); }
 
-  // Inicializar con productos del catálogo si vacío
+  // Inicializar con productos del catálogo si esta vacío
   function initProducts(){
     let list = loadJSON(PKEY, null);
     if(!list || !Array.isArray(list) || !list.length){
@@ -144,7 +144,7 @@
     resetUserForm();
   }
 
-  // Edit / Delete handlers
+  // Edit / Delete
   document.addEventListener('click', (e) => {
     const ed = e.target.closest('[data-edit]');
     const del = e.target.closest('[data-del]');
@@ -200,7 +200,7 @@
     if(e.target && e.target.id === 'uSearch') renderUsers();
   });
 
-  // Save buttons
+  // Save button
   document.addEventListener('DOMContentLoaded', () => {
     initProducts();
     initUsers();
@@ -210,7 +210,7 @@
     document.getElementById('saveProdBtn').addEventListener('click', saveProductFromForm);
     document.getElementById('saveUserBtn').addEventListener('click', saveUserFromForm);
 
-    // Evitar fechas de nacimiento futuras en modal usuario
+    // Evitar fechas de nacimiento futuras en el usuario
     const uNac = document.getElementById('uNac');
     if(uNac){ uNac.setAttribute('max', new Date().toISOString().slice(0,10)); }
   });

@@ -6,7 +6,7 @@ function saveUser(user){ localStorage.setItem(USER_KEY, JSON.stringify(user)); }
 function getUser(){ const raw = localStorage.getItem(USER_KEY); return raw ? JSON.parse(raw) : null; }
 function isLogged(){ return !!getUser(); }
 
-// Email domain helpers
+// Email 
 function isDuocEmail(email){
   if(!email) return false;
   return /@duoc(\.cl|uc\.cl)$/i.test(email);
@@ -29,7 +29,7 @@ function isBirthdayToday(isoDateStr){
   return dob.getDate() === now.getDate() && dob.getMonth() === now.getMonth();
 }
 
-// Discount calculation based on Forma C rules
+// Cálculo del descuento
 function computeDiscounts(items){
   const user = getUser();
   const result = { base: 0, discounts: [], total: 0 };
@@ -42,20 +42,20 @@ function computeDiscounts(items){
     return result;
   }
 
-  // 1) 50% para mayores de 50 años
+  // descuento: 50% para mayores de 50 años
   if(user && calcAge(user.fechaNacimiento) >= 50){
     const d = subtotal * 0.5;
     result.discounts.push({ label: "Descuento 50% (mayor de 50 años)", amount: d });
   }
 
-  // 2) Código FELICES50 => 10% de por vida (si alguna vez se registró/promocionó)
+  // descuento: Código FELICES50 => 10% de por vida 
   const hasLifetime = localStorage.getItem(PROMO_KEY) === 'FELICES50' || (user && user.promoLifetime === 'FELICES50');
   if(hasLifetime){
     const d = subtotal * 0.10;
     result.discounts.push({ label: "FELICES50 (10% de por vida)", amount: d });
   }
 
-  // 3) DUOC cumpleaños => 1 torta gratis (si hay torta en el carrito, aplica 1 unidad más barata)
+  // descuento: DUOC cumpleaños => 1 torta gratis 
   if(user && isDuocEmail(user.email) && isBirthdayToday(user.fechaNacimiento)){
     // buscar tortas por categoría que contenga 'Torta'
     let tortaUnitPrice = null;
