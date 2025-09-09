@@ -1,12 +1,4 @@
-/* =========================
-   main.js - Pastelería 1000 Sabores
-   Carrusel multi-item + carrito
-   ========================= */
 
-/* ---------------------------------
-   Carrusel de productos destacados (index.html)
-   3 productos por slide en desktop, 1 en móvil
-   --------------------------------- */
 function renderDestacadosCarousel() {
   // Toma hasta 9 productos para el carrusel (ajusta si quieres más)
   const destacados = productos.slice(0, 9);
@@ -14,10 +6,9 @@ function renderDestacadosCarousel() {
   const grid = document.getElementById('productGrid');
   if (!grid || !destacados.length) return;
 
-  // Si el contenedor venía con clases de grilla, las quitamos para que el carrusel ocupe el ancho centrado
   grid.classList.remove('row', 'row-cols-1', 'row-cols-sm-2', 'row-cols-md-3', 'g-4');
 
-  // Agrupar de a 3 por slide
+
   const perSlide = 3;
   const slides = [];
   for (let i = 0; i < destacados.length; i += perSlide) {
@@ -84,9 +75,7 @@ function renderDestacadosCarousel() {
   `;
 }
 
-/* ---------------------------------
-   Carrito (localStorage)
-   --------------------------------- */
+/* (localStorage)*/
 const CART_KEY = 'ms_cart_items';
 
 function getCart(){
@@ -121,7 +110,7 @@ function renderCart(){
   renderTotals();
   const items = getCart();
 
-  // Badge contador
+  // contador
   const count = items.reduce((acc, it) => acc + it.cantidad, 0);
   const countEl = document.getElementById('cartCount');
   if (countEl) countEl.textContent = count;
@@ -151,9 +140,7 @@ function renderCart(){
   if (totalEl) totalEl.textContent = '$' + calcTotal(items).toLocaleString('es-CL');
 }
 
-/* ---------------------------------
-   Render de productos (lista clásica)
-   --------------------------------- */
+/* productos (lista clásica) */
 function renderProducts(){
   const grid = document.getElementById('productGrid');
   if(!grid) return;
@@ -180,9 +167,7 @@ function renderProducts(){
   `).join('');
 }
 
-/* ---------------------------------
-   Eventos globales de clic (añadir/quitar)
-   --------------------------------- */
+/* Eventos globales de clic (añadir/quitar)*/
 document.addEventListener('click', (e) => {
   const add = e.target.closest('[data-add]');
   if(add){
@@ -194,14 +179,12 @@ document.addEventListener('click', (e) => {
   if(remove){ removeFromCart(remove.getAttribute('data-remove')); }
 });
 
-/* ---------------------------------
-   Inicio
-   --------------------------------- */
+/*Inicio */
 document.addEventListener('DOMContentLoaded', () => {
   const hasGrid = !!document.getElementById('productGrid');
 
   if (hasGrid) {
-    // index: carrusel multi-item centrado
+    // index: carrusel centrado
     renderDestacadosCarousel();
   } else {
     // otras páginas con listado
@@ -228,9 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* ---------------------------------
-   Descuentos y totales (fallback si no existe computeDiscounts)
-   --------------------------------- */
+
 function renderTotals(){
   const items = getCart();
   const breakdown = (typeof computeDiscounts === 'function')
