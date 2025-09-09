@@ -1,5 +1,5 @@
-// js/validate.js
-// Validaciones en tiempo real sin librerías externas
+/* js/validate.js*/
+/* Validaciones en tiempo real sin librerías externas*/
 (function(){
   'use strict';
 
@@ -76,7 +76,7 @@
     }
   })();
 
-  // Contacto
+  /* Contacto*/
   (function wireContacto(){
     const cemail = byId('cemail');
     if(!cemail) return;
@@ -88,7 +88,7 @@
     });
   })();
 
-  // Login (solo feedback de formato)
+  /* Login */
   (function wireLogin(){
     const lemail = byId('lemail');
     if(!lemail) return;
@@ -100,7 +100,7 @@
     });
   })();
 
-  // Checkout
+  /*Checkout*/
   (function wireCheckout(){
     const ckEmail = byId('ckEmail'), ckAddr = byId('ckAddr');
     if(ckEmail){
@@ -121,7 +121,7 @@
     }
   })();
 
-  // Pequeña "máscara": convertir promo a mayúsculas y recortar espacios
+  /* Pequeña "máscara": convertir promo a mayúsculas y recortar espacios*/
   document.addEventListener('input', (e) => {
     if(e.target && e.target.id === 'promoInput'){
       e.target.value = (e.target.value || '').toUpperCase().replace(/\s+/g,'');

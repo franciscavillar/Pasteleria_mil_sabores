@@ -1,6 +1,6 @@
-// js/data.js
-// Fuente única de datos para productos
-// Aqui se pueden editar más imagenes por si quieren agregar otros.
+/* js/data.js*/
+/*Fuente única de datos para productos*/
+/*Aqui se pueden editar más imagenes por si quieren agregar otros.*/
 const productos = [
   { codigo: 'TC001', categoria: 'Tortas Cuadradas', nombre: 'Torta Cuadrada de Chocolate', precio: 45000, descripcion: 'Bizcocho húmedo de cacao belga con ganache 70%.', stock: 8, imagen: 'img/pastelChocolate.png' },
   { codigo: 'TC002', categoria: 'Tortas Cuadradas', nombre: 'Torta Cuadrada Tres Leches', precio: 43000, descripcion: 'Clásica tres leches con manjar y crema.', stock: 10, imagen: 'img/pastelTresLeches.png' },

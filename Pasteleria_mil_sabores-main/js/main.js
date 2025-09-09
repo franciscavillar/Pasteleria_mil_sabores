@@ -1,7 +1,7 @@
-// Carrusel de productos destacados para index.html
+/*Carrusel de productos destacados para index.html*/
 function renderDestacadosCarousel() {
 
-  // 4 productos
+  /*4 productos*/
   const destacados = [
     productos[0],
     productos[1],
@@ -45,7 +45,7 @@ function renderDestacadosCarousel() {
   `;
 }
 
-// Utilidades de carrito con localStorage
+/*Utilidades de carrito con localStorage*/
 const CART_KEY = 'ms_cart_items';
 
 function getCart(){
@@ -84,11 +84,11 @@ function renderCart(){
   renderTotals();
   const items = getCart();
 
-  // contador
+  /*contador*/
   const count = items.reduce((acc, it) => acc + it.cantidad, 0);
   document.getElementById('cartCount').textContent = count;
 
-  // listado en offcanvas
+  /*listado en offcanvas*/
   const ul = document.getElementById('cartList');
   ul.innerHTML = '';
   items.forEach(it => {
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-//descuentos 
+/*descuentos */
 function renderTotals(){
   const items = getCart();
   const breakdown = computeDiscounts(items);
